@@ -33,7 +33,7 @@ All data is accessible from http://www.cms.gov/Research-Statistics-Data-and-Syst
 
 Run the cms_data_download.sh script at the Linux command line to download all of the necessary data files.
 
-To run all of the different-sized R tests in one go, simply run the runtests.sh script at the Linux command line.
+To run all of the different-sized R tests in one go, simply run the runtests.sh script at the Linux command line. A full test run takes about 40 hours.
 
 == Test Results ==
 
