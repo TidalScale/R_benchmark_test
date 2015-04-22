@@ -12,6 +12,14 @@ POSSIBILITY OF SUCH DAMAGE.
 
 # R_benchmark_test
 
+This software benchmark explores the performance of the R analytics of a large data set on a TidalScale system.
+
+The TidalScale Hyperkernel provides the ability to scale-up the execution of applications beyond the limits of a single server. TidalScale's approach delivers better performance for the application while avoiding the need for re-architecting the application or re-engineering for scale-out to achieve good performance. 
+
+R is an analytic and statistical programming language whose use is rapidly spreading as organizations sharpen their ability to understand and learn from data they amass. Many operations in R are memory intensive, and analysts and data scientists often struggle to keep their working data sets within the limitations of a single computer. The TidalScale Hyperkernel allows multiple physical computers to run as a single system that allows the unmodified application to use the aggregate RAM, CPUs and I/O of the underlying hardware. The R applications therefore "see" a single computer system while the TidalScale Hyperkernels enable growth and performance by scaling-out on commodity hardware. 
+
+In this benchmark, we compare the performance and capacity of R applications with large datasets, running on "bare metal" servers versus a server instance on TidalScale. The performance results described below illustrate important aspects of TidalScale performance as of version 1.0. We demonstrate scalable performance of four different R operations which, more generally, are representative of the kinds of analytic workloads that benefit from running on large, coherent systems.
+
 == Test Software ==
 
 This software test requires the following software:
