@@ -12,7 +12,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 # R_benchmark_test
 
-This software benchmark explores the performance of the R analytics of a large data set on a TidalScale system.
+This software benchmark explores the performance of R analytics over a large data set on a TidalScale system.
 
 The TidalScale Hyperkernel provides the ability to scale-up the execution of applications beyond the limits of a single server. TidalScale's approach delivers better performance for the application while avoiding the need for re-architecting the application or re-engineering for scale-out to achieve good performance. 
 
