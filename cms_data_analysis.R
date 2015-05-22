@@ -152,7 +152,7 @@ print_time("gam model", fit_gam1_time)
 print_mem_used("mem_used after executing gam model")
 
 #-------------------------
-# Genralized linear model
+# Generalized linear model
 #-------------------------
 # Formula for to predict total inpatient expenses. 
 # It includes patient demographic, chronic condition, and prescription drug covariates.
