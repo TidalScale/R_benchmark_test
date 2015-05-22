@@ -37,29 +37,6 @@ data_pre_process <- function(patients){
   patients$bene_sex_ident_cd[patients$bene_sex_ident_cd == 1] <- 0
   patients$bene_sex_ident_cd[patients$bene_sex_ident_cd == 2] <- 1
   
-  # The dataset contains 4 kinds of race.
-  # 1. White
-  # 2. Black
-  # 3. Others
-  # 5. Hispanic
-  # create new columns for each race 
-  
-  # New column for white race
-  patients$race_white <- 0 
-  patients$race_white[patients$bene_race_cd == 1] <- 1
-  
-  # New column for black race
-  patients$race_black <- 0 
-  patients$race_black[patients$bene_race_cd == 2] <- 1
-  
-  # New column for others race
-  patients$race_others <- 0 
-  patients$race_others[patients$bene_race_cd == 3] <- 1
-  
-  # New column for hispanic race
-  patients$race_hispanic <- 0 
-  patients$race_hispanic[patients$bene_race_cd == 5] <- 1
-  
   # The dataset contains numeric value for diseases as follows:
   # 1. Yes
   # 2. No
@@ -80,7 +57,9 @@ data_pre_process <- function(patients){
   patients$sp_osteoprs[patients$sp_osteoprs == 2] <- 0
   patients$sp_ra_oa[patients$sp_ra_oa == 2] <- 0
   patients$sp_strketia[patients$sp_strketia == 2] <- 0
-  
+  patients$total_inpatient_expense <- patients$medreimb_ip + 
+                                      patients$benres_ip + 
+                                      patients$pppymt_ip
   return(patients)
 }
 
@@ -96,4 +75,64 @@ add_year <- function(data, col_name){
   
   data$year <- as.numeric(substr(as.character(data[, which(names(data) == col_name)]),1,4))
   return(data)
+}
+
+get_inpatient_drugs_data <- function(cms_inpatient, drug){
+  # Get beneficiaries and prescription drug data, for patients who were admitted to the hospital atleast once. 
+  # In technical terms, get patients who have atleast 1 inpatient record in inpatient data
+  #
+  # Args:
+  # This function requires patient, inpatient and prescription drug event data.
+  #
+  # Returns:
+  # A single data frame which contains beneficiary summary and prescription drugs data, 
+  # for patients who were admitted to hostpital atleast once.
+  
+  inpatient_exp <- cms_inpatient  #  patient[patient$desynpuf_id %in% inpatient$desynpuf_id && patient$year == inpatient$year,]
+  
+  # Get summary of prescription drugs for each beneficiary
+  drug_summary <- data.frame()
+  drug_summary <- drug %>% group_by(desynpuf_id, year) %>% 
+    summarise(tot_quantity = sum(qty_dspnsd_num), tot_days_supply = sum(days_suply_num),
+              tot_patient_pay_amount = sum(ptnt_pay_amt), tot_drug_cost = sum(tot_rx_cst_amt))
+  
+  # Combine patient data, who have 1 inpatient record, with prescription drug summary
+  inpatient_drug <- left_join(inpatient_exp, drug_summary, by = c("desynpuf_id", "year"))
+  
+  # Data pre-processing to handle NA values introduced by left join
+  inpatient_drug[is.na(inpatient_drug$tot_quantity),"tot_quantity"] <- 0
+  inpatient_drug[is.na(inpatient_drug$tot_days_supply),"tot_days_supply"] <- 0
+  inpatient_drug[is.na(inpatient_drug$tot_patient_pay_amount), "tot_patient_pay_amount"] <- 0
+  inpatient_drug[is.na(inpatient_drug$tot_drug_cost), "tot_drug_cost"] <- 0
+  
+  return(inpatient_drug)
+}
+
+cms_data_graphs <- function(patient){
+  # Create graphs to give more insights into cms data
+  #
+  # Args:Patient data with age and total inpatient expense
+  #
+  # Return: Outputs grpahs in PDF file
+  
+  #----
+  # plots
+  #---
+  library(ggplot2)
+  #pdf("cms_data_graphs.pdf")
+  cms_plots <- vector(length = 11)
+  cms_plots[1] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_alzhdmta) + geom_point()
+  cms_plots[2] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_ischmcht) + geom_point()
+  cms_plots[3] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_diabetes) + geom_point()
+  cms_plots[4] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_chrnkidn) + geom_point()
+  cms_plots[5] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_cncr) + geom_point()
+  cms_plots[6] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_chf) + geom_point()
+  cms_plots[7] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_copd) + geom_point()
+  cms_plots[8] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_depressn) + geom_point()
+  cms_plots[9] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_osteoprs) + geom_point()
+  cms_plots[10] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_ra_oa) + geom_point()
+  cms_plots[11] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_strketia) + geom_point()
+  
+  #dev.off()
+  #ggsave("cms_data_graphs.pdf", do.call(cms_plots, c(cms_plots, list(nrow=2, ncol=1))))
 }
