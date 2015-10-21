@@ -43,7 +43,7 @@ The R_performance_analysis.pdf white paper documents our benchmark results from 
 
 * In our experience of trying various CPU configurations, it appears that R does best systems with 8 CPUs. This is true on both bare metal hardware _and_ TidalScale systems.
 * Garbage collection in R affects load times negatively. In this benchmark we control garbage collection by turning it off (`gc(F)`) during file load and then turning it on (`gc(T)`) for subsequent operations.
-* A log-log chart is the best way to observe results in a manner that allows one to see patterns at all size of tests.
+* A log-log chart is the best way to observe results in a manner that allows one to see patterns at all sizes of test runs.
 
 
 
