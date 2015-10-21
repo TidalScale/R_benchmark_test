@@ -1,7 +1,11 @@
+# Set June 1, 2015 as the reference date,
+# cf. http://mran.revolutionanalytics.com/web/packages/checkpoint/vignettes/checkpoint.html
+library(checkpoint)
+checkpoint("2015-06-01")
+
 # Clear the memory before running
 rm(list= ls())
 
-#options(echo=FALSE) # Hides R commands in output file
 args <- commandArgs(trailingOnly = TRUE) # trailingOnly=TRUE means that only your arguments are returned
 args_from <- as.numeric(args[1])   # Get cms sample start of range
 args_to <- as.numeric(args[2])   # Get cms sample end of range
@@ -17,17 +21,26 @@ if(file.exists(data_file_path) == FALSE){
   q(save="no", status = 101)
 }
 
-# Load libraries and supress messages to get a clean output
-load_libraries <- c("pryr","dplyr", "mgcv", "rpart", "randomForest", "FNN", "doParallel", "foreach")
-a <- lapply(load_libraries, function(x) suppressMessages( library(x, character.only = T)))
-
-# Allows to generate same random values each time.
-set.seed(pi)
+# Load libraries
+# IMPORTANT: pryr *must* be loaded prior to dplyr
+library(pryr)
+library(dplyr)
+library(mgcv)
+library(rpart)
+library(randomForest)
+library(FNN)
+library(doParallel)
+library(foreach)
+library(Matrix)
 
 # Load supporting file for data analysis
 source("cms_data_load.R")
 source("cms_data_preprocess.R")
 source("cms_utils.R")
+
+
+# Fix seed value
+set.seed(123)
 
 #Set cms dataset path
 setwd(data_file_path)
@@ -51,12 +64,12 @@ print(test_sample)
 print(claims_sample)
 
 years <- c(2008,2009,2010)
-sample_id <-  test_sample     
-claims_sample <- claims_sample  
+sample_id <-  test_sample
+claims_sample <- claims_sample
 
 # For loading data in parallel
-cluster = set_cores()
-print_value("Number of cores in use ", get_cores())
+cores <- set_cores()
+print_value("Number of cores in use ", cores)
 
 #---------------------------------------------
 # Step 1: Load data.
@@ -85,9 +98,6 @@ load_time <- load_time + system.time(carrier_claims <- get_data_read_csv(claims_
 # Get patient drugs data 
 drug_file_name <- "DE1_0_2008_to_2010_Prescription_Drug_Events_Sample_%s.csv"
 load_time <- load_time + system.time(drug <- get_data_read_csv(drug_file_name, sample_id, smoke_test))
-
-# Delete cluster
-reset_cores(cluster)
 
 print_time("load time", load_time)
 # The size of data frame objects in memory that contain data for patient, inpatient, outpatient, carrier claims, and drug
@@ -152,7 +162,7 @@ print_time("gam model", fit_gam1_time)
 print_mem_used("mem_used after executing gam model")
 
 #-------------------------
-# Generalized linear model
+# Genralized linear model
 #-------------------------
 # Formula for to predict total inpatient expenses. 
 # It includes patient demographic, chronic condition, and prescription drug covariates.
@@ -203,9 +213,9 @@ fit_random_trees_time <- numeric(length = 5)
 fit_random_trees_time <- rep(0., 5)
 
 # No. of trees for random forest, allows to grow n number of trees
-rf_n <- 50
-fit_random_trees_time <- system.time(fit_rf <- randomForest(formula_rf, data = tree_inpatient_drug, nodesize = 1, maxnodes = 10,
-                                                           importance = T, ntree = rf_n))
+rf_n <- 4
+fit_random_trees_time <- system.time(fit_rf <- randomForest(formula_rf, data = tree_inpatient_drug, 
+                                                            importance = T, ntree = rf_n))
 
 print_time("random forest", fit_random_trees_time)
 print_mem_used("mem_used after executing random forest model")
@@ -246,4 +256,3 @@ print_mem_used("mem_used after executing knn model")
 
 # Graphs to get more insights into the data
 # cms_data_graphs(patient)
-

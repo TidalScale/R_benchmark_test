@@ -134,5 +134,4 @@ cms_data_graphs <- function(patient){
   cms_plots[11] <- ggplot(patient) + aes(x = age, y = total_inpatient_expense, color = sp_strketia) + geom_point()
   
   #dev.off()
-  #ggsave("cms_data_graphs.pdf", do.call(cms_plots, c(cms_plots, list(nrow=2, ncol=1))))
 }

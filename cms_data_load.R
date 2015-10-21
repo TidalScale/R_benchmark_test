@@ -1,12 +1,13 @@
-
+# Contains methods for loading data from csv files 
 
 get_data_read_csv <- function(file_name_template, samples, smoke_test){
+  # Gets data from csv files for samples
   
   # Get a list of file names
   file_names <- get_file_names(file_name_template, samples)
   
   # Load files in parallel using all available cores and export functions required for foreach loop execution
-  df <- foreach(file_name = file_names, .combine = rbind, .export=c("file_exists", "load_data")) %dopar% {
+  df <- foreach(file_name = file_names, .combine = rbind, .export=c("file_exists", "load_data")) %do% {
       if(file_exists( file_name = file_name)){
           # Keep the character columns as charaters, avoid coercing to factors.
           df <- load_data(data_file_name = file_name, smoke_test = smoke_test)
@@ -20,11 +21,12 @@ get_data_read_csv <- function(file_name_template, samples, smoke_test){
 }
 
 get_data_read_csv_patients <- function(file_name_template, samples, years){
+  # Gets data from csv files for patients for samples
   
   # Load patient data in parallel and export functions and packages to the execution environment
   df <- foreach(sample = samples, .combine = rbind, .export=c("file_exists", "load_data"), 
-                .packages=c("doParallel")) %dopar% {
-            foreach(year = years, .combine = rbind) %dopar% {
+                .packages=c("doParallel")) %do% {
+            foreach(year = years, .combine = rbind) %do% {
                 str_file_name <- sprintf(file_name_template, year, sample) 
                 data_file_name <- str_file_name
                 
@@ -42,6 +44,8 @@ get_data_read_csv_patients <- function(file_name_template, samples, years){
 }
 
 load_data <- function(data_file_name, smoke_test = FALSE){
+  # Reads data from CSV files.
+  
   # For smoke test:
   # 1,800,000 rows uses 3.51 GB memory at max and takes 296.918 seconds to execute
   # 2,000,000 rows uses 4.20 GB memory at max and takes 323.974 seconds to execute
@@ -72,7 +76,8 @@ file_exists <- function(file_name){
 }
 
 get_file_names <- function(file_name_template, samples){
-  # Create a list of file names
+  # Creates a list of file names
+  
   file_names <- foreach(sample = samples, .combine=c) %dopar% {
       str_file_name <- sprintf(file_name_template, sample) 
       data_file_name <- str_file_name
@@ -80,4 +85,3 @@ get_file_names <- function(file_name_template, samples){
   }
   return(file_names)
 }
-
