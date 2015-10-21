@@ -29,7 +29,7 @@ This software test requires the following software:
 
 == Downloading the Test Data ==
 
-All data is accessible from https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/DE_Syn_PUF.html[Data Entrepreneurs Synthetic Public Use Data Set].
+All data is accessible from https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/DE_Syn_PUF.html [Data Entrepreneurs Synthetic Public Use Data Set].
 
 Run the cms_data_download.sh script at the Linux command line to download all of the necessary data files.
 
