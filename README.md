@@ -25,7 +25,7 @@ In this benchmark, we compare the performance and capacity of R applications wit
 This software test requires the following software:
 
 * CentOS 6.5
-* Revolution R Enterprise 3.1 (but this should work fine on revolution R Open)
+* Revolution R Enterprise 3.1 (but this should work fine on Revolution R Open)
 
 ## Downloading the Test Data
 
