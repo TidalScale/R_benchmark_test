@@ -35,7 +35,7 @@ Run the scripts/cms_data_download.sh script at the Linux command line to downloa
 
 To run all of the different-sized R tests in one go, simply run the runtests.sh script at the Linux command line. A full test run takes about 40 hours.
 
-== Test Results ==
+## Test Results
 
 The R_performance_analysis.pdf white paper documents our benchmark results from running this test on a 5 node TidalScale system.
 
