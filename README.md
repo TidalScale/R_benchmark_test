@@ -20,14 +20,14 @@ R is an analytic and statistical programming language whose use is rapidly sprea
 
 In this benchmark, we compare the performance and capacity of R applications with large datasets, running on "bare metal" servers versus a server instance on TidalScale. The benchmark results illustrate important aspects of TidalScale performance as of version 1.0. We demonstrate scalable performance of four different R operations which, more generally, are representative of the kinds of analytic workloads that benefit from running on large, coherent systems.
 
-== Test Software ==
+## Test Software
 
 This software test requires the following software:
 
 * CentOS 6.5
 * Revolution R Enterprise 3.1 (with dplyr and __ plugins installed)
 
-== Downloading the Test Data ==
+## Downloading the Test Data
 
 All data is accessible from https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/DE_Syn_PUF.html [Data Entrepreneurs Synthetic Public Use Data Set].
 
@@ -39,7 +39,7 @@ To run all of the different-sized R tests in one go, simply run the runtests.sh 
 
 The R_performance_analysis.pdf white paper documents our benchmark results from running this test on a 5 node TidalScale system.
 
-== Comments and Observations ==
+## Comments and Observations
 
 * In our experience of trying various CPU configurations, it appears that R does best systems with 8 CPUs. This is true on both bare metal hardware _and_ TidalScale systems.
 * Garbage collection in R affects load times negatively. In this benchmark we control garbage collection by turning it off (`gc(F)`) during file load and then turning it on (`gc(T)`) for subsequent operations.
