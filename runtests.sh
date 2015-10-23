@@ -6,9 +6,8 @@ RESULTS="$HOME/benchmark-results/${host}-${cpus}-${total_mem_in_gb}GB"
 mkdir -p $(dirname $RESULTS)
 cd ~/tests/R-test/cms_test
 # Start test
-# Run on 157GB nodes
-# 0=15GB, 1=34GB, 3=102GB (1 node), 5=170GB (2 nodes), 10=340GB (3 nodes), 16=544GB (4 nodes), 20=680GB (5 nodes)
-for x in  0 1 3 5 10 16 20
+# Run on five 128GB nodes (i.e. a 640GB guest)
+for x in  0 1 3 5 8 10 13 17
 do
 	        echo Starting sample size $x
 		        SAMPLE_RESULTS="$RESULTS-samples-$x"
