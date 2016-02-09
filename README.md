@@ -25,7 +25,7 @@ In this benchmark, we compare the performance and capacity of R applications wit
 This software test requires the following software:
 
 * CentOS 6.5
-* Revolution R Enterprise 3.1 (but this should work fine on Revolution R Open)
+* Revolution R Open 8.0.3 with a CRAN snapshot taken on 2015-04-01
 
 TidalScale's internal regression test framework is written in Python to be OS-independent and is executed under the control of the Nose test framework. Nose extends Python's standard unittest module (see https://docs.python.org/2/library/unittest.html) and provides options for test discovery/selection and the recording of test results in a standardized way among many other capabilities. This R benchmark program relies on Nose test.
 
