@@ -39,7 +39,7 @@ To run all of the different-sized R tests in one go, simply run the runtests.sh 
 
 ## Test Results
 
-The R_performance_analysis.pdf white paper documents our benchmark results from running this test on a 5 node TidalScale system.
+The https://www.tidalscale.com/R_benchmark.html[R System Performance Analysis for R] white paper documents our benchmark results from running this test on a 5 node TidalScale system.
 
 ## Comments and Observations
 
