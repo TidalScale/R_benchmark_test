@@ -67,9 +67,9 @@ The https://www.tidalscale.com/R_benchmark.html white paper documents our benchm
 
 ## Correct Output
 
-- [1] "/data/cms"
--           used (Mb) gc trigger (Mb) max used (Mb)
-- Ncells 1197785 64.0    1590760 85.0  1476915 78.9
+. [1] "/data/cms"
+.           used (Mb) gc trigger (Mb) max used (Mb)
+. Ncells 1197785 64.0    1590760 85.0  1476915 78.9
 $ Vcells 1732626 13.3    2899967 22.2  2092494 16.0
 $ [1] 1 2 3 4 5
 $  [1] "1A" "1B" "2A" "2B" "3A" "3B" "4A" "4B" "5A" "5B"
