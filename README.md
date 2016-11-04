@@ -31,6 +31,10 @@ This software test requires the following software:
 
 TidalScale's internal regression test framework is written in Python to be OS-independent and is executed under the control of the Nose test framework. Nose extends Python's standard unittest module (see https://docs.python.org/2/library/unittest.html) and provides options for test discovery/selection and the recording of test results in a standardized way among many other capabilities. This R benchmark program relies on Nose test.
 
+The runtests.sh script relies on a CentOS time utility that can be installed with the following command at the Linux shell:
+
+$ sudo yum install time
+
 ## Downloading the Test Data
 
 All data is accessible from the Data Entrepreneurs Synthetic Public Use Data Set (see https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/DE_Syn_PUF.html).
