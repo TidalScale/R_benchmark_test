@@ -41,7 +41,7 @@ All data is accessible from the Data Entrepreneurs Synthetic Public Use Data Set
 
 Run the scripts/cms_data_download.sh script at the Linux command line to download all of the necessary data files in a directory that has >70GB storage space. Then you must modify runtests.sh execution line to point at that directory.
 
-To run all of the different-sized R tests in one go, simply run the runtests.sh script at the Linux command line. A full test run takes about a week (if you have a system large enough to hold all the data in memory ;).
+To run all of the different-sized R tests in one go, simply run the runtests.sh script at the Linux command line. A full test run takes about four days (if you have a system large enough to hold all the data in memory ;).
 
 ## Installing R packages
 
