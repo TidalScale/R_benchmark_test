@@ -35,7 +35,7 @@ TidalScale's internal regression test framework is written in Python to be OS-in
 
 All data is accessible from the Data Entrepreneurs Synthetic Public Use Data Set (see https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/DE_Syn_PUF.html).
 
-Run the scripts/cms_data_download.sh script at the Linux command line to download all of the necessary data files in a directory that has >70GB storage space. Then you must modify cms_data_analysis.R to point at that directory.
+Run the scripts/cms_data_download.sh script at the Linux command line to download all of the necessary data files in a directory that has >70GB storage space. Then you must modify runtests.sh execution line to point at that directory.
 
 To run all of the different-sized R tests in one go, simply run the runtests.sh script at the Linux command line. A full test run takes about a week (if you have a system large enough to hold all the data in memory ;).
 
