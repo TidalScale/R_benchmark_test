@@ -65,7 +65,7 @@ The https://www.tidalscale.com/R_benchmark.html white paper documents our benchm
 * Garbage collection in R affects load times negatively (no matter what system it is running on). In this benchmark we control garbage collection by turning it off (`gc(F)`) during file load and then turning it on (`gc(T)`) for subsequent operations.
 * A log-log chart is the best way to observe results in a manner that allows one to see patterns at all sizes of test runs.
 
-## Correct Output
+## Correct Output from a Single Sized Test
 
 - [1] "/data/cms"
 -           used (Mb) gc trigger (Mb) max used (Mb)
