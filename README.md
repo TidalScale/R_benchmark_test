@@ -49,11 +49,11 @@ Where 'foo'= (checkpoint, pryr, dplyr, mgcv, rpart, randomForest, FNN, doParalle
 
 ## Running the Test
 
-This is a long running job so it is convenient to start a tmux session and then execute the runtest.sh script such that the results are written to a text file:
+This is a long running job so it is convenient to start a tmux session and then execute the runtest.sh script from there. 
 
-$ ./runtests.sh | tee testresult.txt
+$ ./runtests.sh
 
-You can edit the runtests.sh script to test any combination of in-memory workload sizes desired.
+You can edit the runtests.sh script to test any combination of in-memory workload sizes desired. The results will be written to a text file called 'testoutput.txt' but you can modify that in runtests.sh as well.
 
 ## Test Results
 
@@ -67,8 +67,8 @@ The https://www.tidalscale.com/R_benchmark.html white paper documents our benchm
 
 ## Correct Output
 
-$ [1] "/data/cms"
-$           used (Mb) gc trigger (Mb) max used (Mb)
+> [1] "/data/cms"
+>           used (Mb) gc trigger (Mb) max used (Mb)
 $ Ncells 1197785 64.0    1590760 85.0  1476915 78.9
 $ Vcells 1732626 13.3    2899967 22.2  2092494 16.0
 $ [1] 1 2 3 4 5
