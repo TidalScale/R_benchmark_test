@@ -29,8 +29,6 @@ This software test requires the following software:
 * CentOS 7.2
 * Revolution R Open 8.0.3 with a CRAN snapshot taken on 2015-04-01
 
-TidalScale's internal regression test framework is written in Python to be OS-independent and is executed under the control of the Nose test framework. Nose extends Python's standard unittest module (see https://docs.python.org/2/library/unittest.html) and provides options for test discovery/selection and the recording of test results in a standardized way among many other capabilities. This R benchmark program relies on Nose test.
-
 The runtests.sh script relies on a CentOS time utility that can be installed with the following command at the Linux shell:
 
 $ sudo yum install time
