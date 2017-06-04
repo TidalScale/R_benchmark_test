@@ -188,7 +188,7 @@ wget http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public
 wget http://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/Downloads/DE1_0_2010_Beneficiary_Summary_File_Sample_11.zip;
 
 unzip DE1_0_2008_Beneficiary_Summary_File_Sample_11.zip;
-unzip DE1_0_2008_to_2010_Carrier_Claims_Sample_11A.zip;
+unzip DE1_0_2008_to_2010_Carrier_Claims_Sample_11A.csv.zip;
 unzip DE1_0_2008_to_2010_Carrier_Claims_Sample_11B.zip;
 unzip DE1_0_2008_to_2010_Inpatient_Claims_Sample_11.zip;
 unzip DE1_0_2008_to_2010_Outpatient_Claims_Sample_11.zip;
