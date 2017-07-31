@@ -32,6 +32,8 @@ This software test requires the following software:
 The runtests.sh script relies on a CentOS time utility that can be installed with the following command at the Linux shell:
 
 $ sudo yum install time
+$ sudo yum install htop
+$ sudo yum install R
 
 ## Downloading the Test Data
 
