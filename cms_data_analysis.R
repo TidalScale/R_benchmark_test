@@ -1,7 +1,7 @@
 # Set June 1, 2015 as the reference date,
 # cf. http://mran.revolutionanalytics.com/web/packages/checkpoint/vignettes/checkpoint.html
 library(checkpoint)
-checkpoint("2015-06-01")
+checkpoint("2015-12-01")
 
 # Clear the memory before running
 rm(list= ls())
