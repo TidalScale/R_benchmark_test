@@ -43,7 +43,12 @@ Run the scripts/cms_data_download.sh script at the Linux command line to downloa
 
 To run all of the different-sized R tests in one go, simply run the runtests.sh script at the Linux command line. A full test run takes about four days (if you have a system large enough to hold all the data in memory ;).
 
-## Installing R packages
+## Installing R & packages
+
+To install R:
+
+$ sudo yum install epel-release -y
+$ sudo yum install R -y
 
 After installing R you will need to install the following packages one at a time from inside R:
 
