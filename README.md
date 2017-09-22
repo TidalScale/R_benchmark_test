@@ -27,7 +27,7 @@ In this benchmark, we compare the performance and capacity of R applications wit
 This software test requires the following software:
 
 * CentOS 7.2
-* Revolution R Open 8.0.3 with a CRAN snapshot taken on 2015-04-01
+* Revolution R Open 8.0.3 with a CRAN snapshot taken on 2015-12-01
 
 The runtests.sh script relies on a CentOS time utility that can be installed with the following command at the Linux shell:
 
