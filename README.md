@@ -20,7 +20,7 @@ R is an analytic and statistical programming language whose use is rapidly sprea
 
 The TidalScale Hyperkernel makes it possible for multiple physical computers to operate as a single system which enables the unmodified application to use the aggregate RAM, CPUs and I/O of the underlying hardware. The R application therefore "sees" a single computer system while the TidalScale Hyperkernels enable growth and performance by scaling-out on commodity hardware. 
 
-In this benchmark, we compare the performance and capacity of R applications with large datasets, running on "bare metal" servers versus a server instance on TidalScale. The benchmark results illustrate important aspects of TidalScale performance as of version 1.0. We demonstrate scalable performance of four different R operations which, more generally, are representative of the kinds of analytic workloads that benefit from running on large, coherent systems.
+In this benchmark, we compare the performance and capacity of R applications with large datasets, running on "bare metal" servers versus a server instance on TidalScale. The benchmark results illustrate important aspects of TidalScale performance as of version 1.0. We demonstrate scalable performance of five different R operations which, more generally, are representative of the kinds of analytic workloads that benefit from running on large, coherent systems.
 
 ## Test Software
 
