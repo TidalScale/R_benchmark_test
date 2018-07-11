@@ -59,6 +59,7 @@ Where 'foo'= (checkpoint, pryr, dplyr, mgcv, rpart, randomForest, FNN, doParalle
 Start R and run the following two lines:
 
 > library(checkpoint)
+
 > checkpoint("2015-12-01")
 
 This will take all libraries back to the state they were on Dec 1, 2015.
