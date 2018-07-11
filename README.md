@@ -56,6 +56,13 @@ After installing R you will need to install the following packages one at a time
 
 Where 'foo'= (checkpoint, pryr, dplyr, mgcv, rpart, randomForest, FNN, doParallel, foreach, Matrix)
 
+Start R and run the following two lines:
+
+> library(checkpoint)
+> checkpoint("2015-12-01")
+
+This will take all libraries back to the state they were on Dec 1, 2015.
+
 ## Running the Test
 
 This is a long running job so it is convenient to start a tmux session and then execute the runtest.sh script from there. 
