@@ -31,9 +31,7 @@ This software test requires the following software:
 
 The runtests.sh script relies on a CentOS time utility that can be installed with the following command at the Linux shell:
 
-$ sudo yum install time
-$ sudo yum install htop
-$ sudo yum install R
+$ sudo yum install time htop -y
 
 ## Downloading the Test Data
 
@@ -47,8 +45,7 @@ To run all of the different-sized R tests in one go, simply run the runtests.sh 
 
 To install R:
 
-$ sudo yum install epel-release -y
-$ sudo yum install R -y
+$ sudo yum install epel-release R -y
 
 After installing R you will need to install the following packages one at a time from inside R:
 
