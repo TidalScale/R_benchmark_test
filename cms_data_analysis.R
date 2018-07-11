@@ -1,7 +1,7 @@
 # Set Dec 1, 2015 as the reference date,
 # cf. http://mran.revolutionanalytics.com/web/packages/checkpoint/vignettes/checkpoint.html
-library(checkpoint)  # comment these 2 lines out after running this test the first time
-checkpoint("2015-12-01")
+# library(checkpoint)  # run these two lines BEFORE running this test for the first time
+# checkpoint("2015-12-01")
 
 # Clear the memory before running
 rm(list= ls())
